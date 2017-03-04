@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/jall/project-euler/numberutil"
+	"github.com/jall/project-euler/stringutil"
 	"strconv"
 )
 
@@ -19,31 +21,10 @@ func main() {
 		}
 	}
 
-	fmt.Println(max(palindromes))
+	fmt.Println(numberutil.Max(palindromes))
 }
 
 func isPalindrome(number int) bool {
 	str := strconv.Itoa(number)
-	return str == reverse(str)
-}
-
-// Reverse returns its argument string reversed rune-wise left to right.
-func reverse(s string) string {
-	r := []rune(s)
-	for i, j := 0, len(r)-1; i < len(r)/2; i, j = i+1, j-1 {
-		r[i], r[j] = r[j], r[i]
-	}
-	return string(r)
-}
-
-func max(numbers []int) int {
-	max := numbers[0]
-
-	for _, number := range numbers {
-		if number > max {
-			max = number
-		}
-	}
-
-	return max
+	return str == stringutil.Reverse(str)
 }
