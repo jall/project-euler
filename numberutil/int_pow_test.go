@@ -4,9 +4,9 @@ import "testing"
 
 func TestPow(t *testing.T) {
 	cases := []struct {
-		num int
+		num      int
 		exponent int
-		want int
+		want     int
 	}{
 		{1, 1, 1},
 		{2, 4, 16},

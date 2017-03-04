@@ -28,8 +28,8 @@ func TestPrimeFactorsGrouped(t *testing.T) {
 		in   int
 		want map[int]int
 	}{
-		{20, map[int]int{2:2, 5:1}},
-		{600851475143, map[int]int{71:1, 839:1, 1471:1, 6857:1}},
+		{20, map[int]int{2: 2, 5: 1}},
+		{600851475143, map[int]int{71: 1, 839: 1, 1471: 1, 6857: 1}},
 		{1, map[int]int{}},
 	}
 

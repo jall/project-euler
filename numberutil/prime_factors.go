@@ -22,7 +22,7 @@ func PrimeFactorsGrouped(number int) map[int]int {
 	grouped := make(map[int]int)
 
 	for _, factor := range factors {
-	    grouped[factor]++
+		grouped[factor]++
 	}
 
 	return grouped
