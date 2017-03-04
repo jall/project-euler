@@ -16,3 +16,14 @@ func PrimeFactors(number int) []int {
 
 	return factors
 }
+
+func PrimeFactorsGrouped(number int) map[int]int {
+	factors := PrimeFactors(number)
+	grouped := make(map[int]int)
+
+	for _, factor := range factors {
+	    grouped[factor]++
+	}
+
+	return grouped
+}
