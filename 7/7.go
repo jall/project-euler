@@ -1,45 +1,53 @@
 package main
 
 import (
-    "fmt"
-    "github.com/jall/project-euler/numberutil"
-    "math"
-    "sort"
+	"fmt"
+	"math"
 )
 
 func main() {
-    primes := sieveOfEratosthenes(2e5)
-    sort.Ints(primes)
-    fmt.Println("Number of primes: ", len(primes))
-    fmt.Println("10001st prime: ", primes[10001 - 1])
+	primes := sieveOfEratosthenes(1e6)
+	primeCount := len(primes)
+	fmt.Println("Number of primes: ", primeCount)
+	if primeCount > 10000 {
+		fmt.Println("10001st prime: ", primes[10000])
+	}
 }
 
+// This version of the algorithm is from wikipedia
+// https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 func sieveOfEratosthenes(limit int) []int {
-    candidates := numberutil.MakeRange(2, limit)
+	candidates := makeBoolArray(limit)
 
-    for prime:= 2; prime < int(math.Sqrt(float64(limit))); prime++ {
-        candidates = filterMultiplesFromSlice(candidates, prime)
-    }
+	// Zero and 1 are not primes
+	candidates[0] = false
+	candidates[1] = false
 
-    return candidates
+	for i := 2; i < int(math.Sqrt(float64(limit))); i++ {
+		if candidates[i] {
+			for j := (i * i); j < limit; j += i {
+				candidates[j] = false
+			}
+		}
+	}
+
+	var primes []int
+
+	for number, isPrime := range candidates {
+		if isPrime {
+			primes = append(primes, number)
+		}
+	}
+
+	return primes
 }
 
-func filterMultiplesFromSlice(slice []int, factor int) []int {
-    filtered := make([]int, 0)
+func makeBoolArray(size int) []bool {
+	booleans := make([]bool, size)
 
-    for _, number := range slice {
-        if (number % factor != 0 || number == factor) {
-            filtered = append(filtered, number)
-        }
-    }
+	for i := range booleans {
+		booleans[i] = true
+	}
 
-    return filtered
-}
-
-// Removes element from slice without preserving order
-// http://stackoverflow.com/a/37335777/7002606
-func remove(slice []int, i int) []int {
-    // Swap element to remove with last element.
-    slice[len(slice)-1], slice[i] = slice[i], slice[len(slice)-1]
-    return slice[:len(slice)-1]
+	return booleans
 }
