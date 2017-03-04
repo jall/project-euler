@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/jall/project-euler/numberutil"
+)
 
 func main() {
 	var multiples []int
@@ -11,15 +14,5 @@ func main() {
 		}
 	}
 
-	fmt.Println("Sum: ", sum(multiples))
-}
-
-func sum(numbers []int) int {
-	total := 0
-
-	for _, number := range numbers {
-		total = total + number
-	}
-
-	return total
+	fmt.Println("Sum: ", numberutil.Sum(multiples))
 }
