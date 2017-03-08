@@ -2,22 +2,20 @@ package main
 
 import (
 	"fmt"
-	"strconv"
+	"math/big"
 )
 
 func main() {
-	// Increase the digit limit (starting at 10) until first 10 digits stabilise
-	// Then the 1st 10 digits are the answer
-	digitLimit := 15
-	var total int64 = 0
+	total := big.NewInt(0)
 
 	for _, str := range getNumericStrings() {
-		subString := str[0:digitLimit]
-		number, _ := strconv.ParseInt(subString, 10, 64)
-		total += number
+		number := big.NewInt(0)
+		number.SetString(str, 10)
+		total.Add(total, number)
 	}
 
-	fmt.Println(total)
+	// Get first 10 digits from string representation
+	fmt.Println(total.String()[0:10])
 }
 
 // Storing these as strings because 50 digit numbers easily overflow int64
