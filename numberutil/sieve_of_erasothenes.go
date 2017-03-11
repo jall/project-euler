@@ -1,7 +1,7 @@
 package numberutil
 
 import (
-    "math"
+	"math"
 )
 
 // This version of the algorithm is from wikipedia

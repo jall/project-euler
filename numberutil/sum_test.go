@@ -4,8 +4,8 @@ import "testing"
 
 func TestSum(t *testing.T) {
 	cases := []struct {
-		numbers     []int
-		want     int
+		numbers []int
+		want    int
 	}{
 		{[]int{1}, 1},
 		{[]int{2, 4, 16}, 22},
