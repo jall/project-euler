@@ -26,15 +26,15 @@ func PowerSetWithOptions(set []int, includeEmptySet, includeOriginalSet bool) []
 	}
 
 	if includeOriginalSet {
-		end = Pow(2, cardinality)
-	} else {
 		end = Pow(2, cardinality) - 1
+	} else {
+		end = Pow(2, cardinality) - 2
 	}
 
 	// Trivial subsets:
 	// 	 Starting from 0 includes the empty set
-	//   Ending at 2^k includes the original set
-	// To avoid both, go from 1 => 2^k -1
+	//   Ending at 2^k -1 includes the original set
+	// To avoid both, go from 1 => 2^k - 2
 	for i := start; i <= end; i++ {
 		var subSet []int
 		binary := stringutil.LeftPad(strconv.FormatInt(int64(i), 2), "0", cardinality)
