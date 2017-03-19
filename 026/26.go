@@ -11,7 +11,7 @@ func main() {
 	longestRecurringCycleLength := 1
 
 	numerator := 1
-	for denominator := 2; denominator < 1000; denominator++ {
+	for denominator := 3; denominator < 1000; denominator++ {
 		expansion, isRepeating := expandFractionToDecimal(numerator, denominator)
 
 		if isRepeating && len(expansion) > longestRecurringCycleLength {
