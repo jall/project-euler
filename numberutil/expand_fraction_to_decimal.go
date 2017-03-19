@@ -1,5 +1,8 @@
 package numberutil
 
+// NB: This does not separate out the repeating portion of the fraction from the rest.
+// E.g. 1/12 expands to 0.08(3), and the expansion will show [0,8,3], but it doesn't
+// tell you that only the 3 is the repeating portion.
 func ExpandFractionToDecimal(numerator, denominator int) (expansion []int, isRepeating bool) {
 	seenBefore := seenBeforeFactory()
 	remainder := numerator % denominator
