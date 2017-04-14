@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/jall/project-euler/numberutil"
-	"strconv"
-	"strings"
 )
 
 // https://en.wikipedia.org/wiki/Narcissistic_number
@@ -23,7 +21,7 @@ func main() {
 	for i := 10; i <= 354294; i++ {
 		sum := 0
 
-		for _, digit := range digits(i) {
+		for _, digit := range numberutil.Digits(i) {
 			sum += numberutil.Pow(digit, 5)
 		}
 
@@ -34,13 +32,4 @@ func main() {
 
 	fmt.Println("Narcissists: ", narcissists)
 	fmt.Println("Sum: ", numberutil.Sum(narcissists))
-}
-
-func digits(number int) (digits []int) {
-	for _, digitString := range strings.Split(strconv.Itoa(number), "") {
-		digit, _ := strconv.Atoi(digitString)
-		digits = append(digits, digit)
-	}
-
-	return digits
 }
