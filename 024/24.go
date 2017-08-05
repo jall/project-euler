@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/jall/project-euler/numberutil"
+	"github.com/jall/project-euler-go/numberutil"
 	"math"
 )
 

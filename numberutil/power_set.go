@@ -1,7 +1,7 @@
 package numberutil
 
 import (
-	"github.com/jall/project-euler/stringutil"
+	"github.com/jall/project-euler-go/stringutil"
 	"strconv"
 	"strings"
 )

@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/jall/project-euler/numberutil"
-	"github.com/jall/project-euler/stringutil"
+	"github.com/jall/project-euler-go/numberutil"
+	"github.com/jall/project-euler-go/stringutil"
 	"strconv"
 )
 
